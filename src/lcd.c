@@ -66,7 +66,9 @@ static uint32_t * const palette = (uint32_t *)0xC0000200;
 static volatile unsigned * lcd_control;
 static unsigned is_hww = 0;
 static unsigned xy_to_fbo(unsigned x, unsigned y){
-	if(is_hww) {
+	if(is_cx2) {
+		return (319-x) * 240 + 239 - y;
+	} else if(is_hww) {
 		return x * 240 + y;
 	} else {
 		return y * 320 + x;

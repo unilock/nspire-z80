@@ -290,7 +290,10 @@ asm(
 static uint8_t extra_screen[64][(120-96)/8];
 
 static void n_set_84_pixel(int x, int y, uint8_t gray, uint8_t *buf){
-	correct_setpixel(x, y, gray, buf + c_offset);
+//	correct_setpixel(x, y, gray, buf + c_offset);
+	for(int dx = 0; dx < 3; ++dx)
+		for(int dy = 0; dy < 3; ++dy)
+			buf[xy_to_fbo(C_XO + x + dx, C_YO + y + dy)] = gray;
 }
 
 static uint8_t get_pixel(int x, int y){

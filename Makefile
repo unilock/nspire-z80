@@ -1,7 +1,7 @@
 DEBUG ?= TRUE
 
 GCC = nspire-gcc
-AS  = arm-none-eabi-as -mcpu=arm926ej-s # nspire-as
+AS  = nspire-as
 GXX = nspire-g++
 LD  = nspire-ld
 GENZEHN = genzehn
@@ -63,9 +63,7 @@ $(EXE).elf: $(patsubst $(SRC_DIR)/%,$(DISTDIR)/%, $(OBJS))
 	$(LD) $^ -o $@ $(LDFLAGS)
 
 $(EXE).tns: $(EXE).elf
-	$(GENZEHN) --input $^ --output $@.zehn $(ZEHNFLAGS)
-	make-prg $@.zehn $@
-	rm $@.zehn
+	$(GENZEHN) --input $^ --output $@ $(ZEHNFLAGS)
 
 .PHONY: deploy
 

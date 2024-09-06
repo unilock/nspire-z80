@@ -71,4 +71,4 @@ deploy: $(EXE).tns
 	NavNet_launcher.exe NavNet_upload.exe "$(shell wslpath -w $(EXE).tns)" $(EXE).tns
 
 clean:
-	rm -f $(patsubst $(SRC_DIR)/%,$(DISTDIR)/%, $(OBJS)) $(EXE).tns $(EXE).elf $(EXE).tns.zehn
+	rm -f $(patsubst $(SRC_DIR)/%,$(DISTDIR)/%, $(OBJS)) $(EXE).tns $(EXE).elf $(EXE).tns
